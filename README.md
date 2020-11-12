@@ -1,24 +1,58 @@
-# README
+# テーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## usersテーブル
 
-Things you may want to cover:
+| Column           | Type   | Options     |
+| ---------------- | ------ | ----------- |
+| nickname         | string | NOT NULL    |
+| email            | string | NOT NULL    |
+| password         | string | NOT NULL    |
+| first_name       | string | NOT NULL    |
+| last_name        | string | NOT NULL    |
+| first_name_kana  | string | NOT NULL    |
+| last_name_kana   | string | NOT NULL    |
+| birthday         | string | NOT NULL    |
 
-* Ruby version
+### Association
+- has_many :items
+- has_one :order
 
-* System dependencies
+## itemsテーブル
+       
+| Column             | Type        | Options                         |
+| ------------------ | ----------- | ------------------------------- |
+| title              | string      | NOT NULL                        |
+| seller_name        | string      | NOT NULL                        |
+| category           | string      | NOT NULL                        |
+| status             | text        | NOT NULL                        |
+| delivery_fee       | string      | NOT NULL                        |
+| delivery_source    | string      | NOT NULL                        |
+| estimated_delivery | string      | NOT NULL                        |
+| user               | reference   | null: false, foreign_key: true  |
+| image              |             |                                 |ActiveStorageで実装
 
-* Configuration
+### Association
 
-* Database creation
+- belongs_to :user
+- has_one :order
 
-* Database initialization
 
-* How to run the test suite
+## ordersテーブル
 
-* Services (job queues, cache servers, search engines, etc.)
+| Column             | Type        | Options                         |
+| ------------------ | ----------- | ------------------------------- |
+| card_number        | string      | NOT NULL                        |
+| expiration_date    | string      | NOT NULL                        |
+| security_code      | string      | NOT NULL                        |
+| post_code          | string      | NOT NULL                        |
+| prefecture         | string      | NOT NULL                        |
+| city               | string      | NOT NULL                        |
+| address            | string      | NOT NULL                        |
+| building_name      | string      |                                 |
+| phone_number       | string      | NOT NULL                        |
+| user               | reference   | null: false, foreign_key: true  |
+| item               | reference   | null: false, foreign_key: true  |
 
-* Deployment instructions
-
-* ...
+### Association
+- belongs_to :user
+- belongs_to :item
