@@ -4,14 +4,14 @@
 
 | Column             | Type        | Options                         |
 | ------------------ | ----------- | ------------------------------- |
-| nickname           | string      | NOT NULL    |
-| email              | string      | NOT NULL    |
-| encrypted_password | string      | NOT NULL    |
-| first_name         | string      | NOT NULL    |
-| last_name          | string      | NOT NULL    |
-| first_name_kana    | string      | NOT NULL    |
-| last_name_kana     | string      | NOT NULL    |
-| birthday           | date        | NOT NULL    |
+| nickname           | string      | NOT NULL                        |
+| email              | string      | NOT NULL                        |
+| encrypted_password | string      | NOT NULL                        |
+| first_name         | string      | NOT NULL                        |
+| last_name          | string      | NOT NULL                        |
+| first_name_kana    | string      | NOT NULL                        |
+| last_name_kana     | string      | NOT NULL                        |
+| birthday           | date        | NOT NULL                        |
 
 ### Association
 - has_many :items
@@ -21,16 +21,16 @@
 
 ## itemsテーブル
        
-| Column             | Type        | Options                         |
-| ------------------ | ----------- | ------------------------------- |
-| title              | string      | NOT NULL                        |
-| price              | string      | NOT NULL                        |
-| category           | string      | NOT NULL                        |
-| status             | string      | NOT NULL                        |
-| shipping_from_id   | integer     | NOT NULL                        |
-| shipping_fee       | string      | NOT NULL                        |
-| estimated_shipping | string      | NOT NULL                        |
-| user               | reference   | null: false, foreign_key: true  |
+| Column                | Type        | Options                         |
+| --------------------- | ----------- | ------------------------------- |
+| title                 | string      | NOT NULL                        |
+| price                 | string      | NOT NULL                        |
+| category_id           | integer     | NOT NULL                        |
+| condition_id          | integer     | NOT NULL                        |
+| shipping_from_id      | integer     | NOT NULL                        |
+| shipping_fee_id       | integer     | NOT NULL                        |
+| estimated_shipping_id | integer     | NOT NULL                        |
+| user                  | reference   | null: false, foreign_key: true  |
 
 ### Association
 
@@ -48,8 +48,7 @@
 | address            | string      | NOT NULL                        |
 | building_name      | string      |                                 |
 | phone_number       | string      | NOT NULL                        |
-| user               | reference   | null: false, foreign_key: true  |
-| item               | reference   | null: false, foreign_key: true  |
+| purchase_id        | string      | NOT NULL                        |
 
 ### Association
 - belongs_to :purchase
@@ -65,4 +64,5 @@
 
 ### Association
 - belongs_to :user
+- belongs_to :item
 - has_one :address
