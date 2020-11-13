@@ -24,7 +24,7 @@
 | Column                | Type        | Options                         |
 | --------------------- | ----------- | ------------------------------- |
 | title                 | string      | NOT NULL                        |
-| price                 | string      | NOT NULL                        |
+| price                 | integer     | NOT NULL                        |
 | category_id           | integer     | NOT NULL                        |
 | condition_id          | integer     | NOT NULL                        |
 | shipping_from_id      | integer     | NOT NULL                        |
@@ -48,7 +48,7 @@
 | address            | string      | NOT NULL                        |
 | building_name      | string      |                                 |
 | phone_number       | string      | NOT NULL                        |
-| purchase_id        | string      | NOT NULL                        |
+| purchase_id        | reference   | null: false, foreign_key: true  |
 
 ### Association
 - belongs_to :purchase
