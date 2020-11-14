@@ -4,14 +4,14 @@
 
 | Column             | Type        | Options                         |
 | ------------------ | ----------- | ------------------------------- |
-| nickname           | string      | NOT NULL                        |
-| email              | string      | NOT NULL                        |
-| encrypted_password | string      | NOT NULL                        |
-| first_name         | string      | NOT NULL                        |
-| last_name          | string      | NOT NULL                        |
-| first_name_kana    | string      | NOT NULL                        |
-| last_name_kana     | string      | NOT NULL                        |
-| birthday           | date        | NOT NULL                        |
+| nickname           | string      | null: false                     |
+| email              | string      | null: false                     |
+| encrypted_password | string      | null: false                     |
+| first_name         | string      | null: false                     |
+| last_name          | string      | null: false                     |
+| first_name_kana    | string      | null: false                     |
+| last_name_kana     | string      | null: false                     |
+| birthday           | date        | null: false                     |
 
 ### Association
 - has_many :items
@@ -23,15 +23,15 @@
        
 | Column                | Type        | Options                         |
 | --------------------- | ----------- | ------------------------------- |
-| title                 | string      | NOT NULL                        |
-| price                 | integer     | NOT NULL                        |
-| description           | text        | NOT NULL                        |
-| category_id           | integer     | NOT NULL                        |
-| condition_id          | integer     | NOT NULL                        |
-| shipping_from_id      | integer     | NOT NULL                        |
-| shipping_fee_id       | integer     | NOT NULL                        |
-| estimated_shipping_id | integer     | NOT NULL                        |
-| user                  | reference   | null: false, foreign_key: true  |
+| title                 | string      | null: false                     |
+| price                 | integer     | null: false                     |
+| description           | text        | null: false                     |
+| category_id           | integer     | null: false                     |
+| condition_id          | integer     | null: false                     |
+| shipping_from_id      | integer     | null: false                     |
+| shipping_fee_id       | integer     | null: false                     |
+| estimated_shipping_id | integer     | null: false                     |
+| user                  | references  | null: false, foreign_key: true  |
 
 ### Association
 
@@ -43,13 +43,13 @@
 
 | Column             | Type        | Options                         |
 | ------------------ | ----------- | ------------------------------- |
-| post_code          | string      | NOT NULL                        |
-| prefecture_id      | integer     | NOT NULL                        |
-| city               | string      | NOT NULL                        |
-| address            | string      | NOT NULL                        |
+| post_code          | string      | null: false                     |
+| prefecture_id      | integer     | null: false                     |
+| city               | string      | null: false                     |
+| address            | string      | null: false                     |
 | building_name      | string      |                                 |
-| phone_number       | string      | NOT NULL                        |
-| purchase           | reference   | null: false, foreign_key: true  |
+| phone_number       | string      | null: false                     |
+| purchase           | references  | null: false, foreign_key: true  |
 
 ### Association
 - belongs_to :purchase
@@ -60,8 +60,8 @@
 
 | Column             | Type        | Options                         |
 | ------------------ | ----------- | ------------------------------- |
-| user               | reference   | null: false, foreign_key: true  |
-| item               | reference   | null: false, foreign_key: true  |
+| user               | references  | null: false, foreign_key: true  |
+| item               | references  | null: false, foreign_key: true  |
 
 ### Association
 - belongs_to :user
