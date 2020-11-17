@@ -99,12 +99,5 @@ describe User do
         expect(@user.errors.full_messages).to include("Birthday can't be blank")
       end
     end
-
-    # メールアドレスが必須であること
-    # メールアドレスは、@を含む必要があること
-    # パスワードが必須であること
-    # パスワードは、6文字以上での入力が必須であること
-    # パスワードとパスワード（確認用）、値の一致が必須であること
-    # - Deviseによるカスタムコントローラの生成は不要（rails g devise controllersのコマンドは、必須機能実装において入力不要）
   end
 end
