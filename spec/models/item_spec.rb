@@ -20,7 +20,7 @@ RSpec.describe Item, type: :model do
           expect(@item).to be_valid
         end
         it '商品の説明の記載があれば出品できる' do
-          @item.description = Faker::Lorem.sentence(50)
+          @item.description = Faker::Lorem.characters(number: 100)
           expect(@item).to be_valid
         end
         it '商品カテゴリーの情報があれば出品できる' do
