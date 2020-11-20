@@ -60,10 +60,20 @@ RSpec.describe Item, type: :model do
           @item.valid?
           expect(@item.errors.full_messages).to include("Title can't be blank")
         end
+        it '商品名が41文字以上では出品できない' do
+          @item.title = Faker::Lorem.characters(number: 41)
+          @item.valid?
+          expect(@item.errors.full_messages).to include("Title is too long (maximum is 40 characters)")
+        end
         it '商品の説明の記載があれば出品できない' do
           @item.description = ''
           @item.valid?
           expect(@item.errors.full_messages).to include("Description can't be blank")
+        end
+        it '商品の説明の記載が1001文字以上では出品できない' do
+          @item.description = Faker::Lorem.characters(number: 1001)
+          @item.valid?
+          expect(@item.errors.full_messages).to include("Description is too long (maximum is 1000 characters)")
         end
         it '商品カテゴリーの情報がなければ出品できない' do
           @item.category_id = ''
@@ -116,23 +126,3 @@ RSpec.describe Item, type: :model do
     end
   end
 end
-
-# - ログイン状態のユーザーだけが、商品出品ページへ遷移できること
-# - ログアウト状態のユーザーは、商品出品ページへ遷移しようとすると、ログインページへ遷移すること
-
-# - 商品画像を1枚つけることが必須であること
-# - 商品名が必須であること
-# - 商品の説明が必須であること
-# - カテゴリーの情報が必須であること
-# - 商品の状態についての情報が必須であること
-# - 配送料の負担についての情報が必須であること
-# - 発送元の地域についての情報が必須であること
-# - 発送までの日数についての情報が必須であること
-# - 価格についての情報が必須であること
-# - 価格の範囲が、¥300~¥9,999,999の間であること
-# - 販売価格は半角数字のみ保存可能であること
-
-# - 入力された販売価格によって、販売手数料や販売利益の表示が変わること
-# - エラーハンドリングができていること（適切では無い値が入力された場合、情報は保存されず、エラーメッセージを出力させること）
-# - 入力に問題がある状態で出品ボタンが押されたら、出品ページに戻りエラーメッセージが表示されること
-

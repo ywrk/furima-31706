@@ -10,5 +10,4 @@ window.addEventListener('load', () => {
    profit.innerHTML = Math.floor(inputValue - addTaxDom.innerHTML);
    console.log(profit.innerHTML);
    })
-
  });
