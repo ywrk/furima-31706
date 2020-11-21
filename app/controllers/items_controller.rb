@@ -2,7 +2,8 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
 
   def index
-    @items = Item.all
+    # @items = Item.all
+    # 後で実装する「商品一覧表示機能」でブランチを作成した際に、差分としてプルリクエストに反映されなくなってしまうため
   end
 
   def new
