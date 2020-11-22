@@ -62,6 +62,7 @@
 
 .or-text {
   font-size: 20px;
+  margin: 20px 0px; /* デフォルトから追加 */
 }
 
 .item-destroy {
