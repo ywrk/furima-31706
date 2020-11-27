@@ -45,7 +45,8 @@
 }
 
 .buy-item-price {
-  display: flex;
+  /* display: flex; */ 
+  /* デフォルトから変更 これが原因でpが改行されない */
   font-weight: bold;
   align-items: center;
   margin-top: 10px;
