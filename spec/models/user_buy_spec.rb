@@ -11,6 +11,11 @@ RSpec.describe UserBuy, type: :model do
         it '購入には次の7点とトークンが存在すれば購入できる post_code,prefecture_id,city,address,phone_number,user_id, item_id' do
           expect(@user_buy).to be_valid
         end
+        it '建物番号が空の場合でも購入できる' do
+          @user_buy.building_name = ''
+          expect(@user_buy).to be_valid
+        end      
+
       end
 
       context '購入がうまくいかない場合' do
