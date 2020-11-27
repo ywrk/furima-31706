@@ -8,7 +8,7 @@ RSpec.describe UserBuy, type: :model do
 
     describe '商品の購入' do
       context '購入がうまくいく場合' do
-        it '購入には次の5点とトークンが存在すれば購入できる post_code,prefecture_id,city,address,phone_number' do
+        it '購入には次の7点とトークンが存在すれば購入できる post_code,prefecture_id,city,address,phone_number,user_id, item_id' do
           expect(@user_buy).to be_valid
         end
       end
@@ -64,11 +64,25 @@ RSpec.describe UserBuy, type: :model do
           expect(@user_buy.errors.full_messages).to include("Phone number is too long (maximum is 11 characters)")
         end
         
+         it 'use_idが空欄の場合' do
+          @user_buy.user_id = ""
+          @user_buy.valid?
+          expect(@user_buy.errors.full_messages).to include("User can't be blank")
+        end
+
+         it 'item_idが空欄の場合' do
+          @user_buy.item_id = ""
+          @user_buy.valid?
+          expect(@user_buy.errors.full_messages).to include("Item can't be blank")
+        end
+
          it 'トークンが空欄の場合' do
           @user_buy.token = ""
           @user_buy.valid?
           expect(@user_buy.errors.full_messages).to include("Token can't be blank")
         end
+
+        
 
       end
 
